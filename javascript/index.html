@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function debounce(func, timeout = 300) {
+        let timer;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            func.apply(this, args); // ✅
+          }, timeout);
+        };
+      }
+
+      function saveInput() {
+        console.log('Saving data');
+      }
+
+      const processChange = debounce(() => saveInput());
+    </script>
+  </body>
+</html>
